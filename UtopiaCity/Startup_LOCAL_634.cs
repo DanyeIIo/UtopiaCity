@@ -6,11 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using UtopiaCity.Common;
 using UtopiaCity.Data;
-using UtopiaCity.Services.Airport;
 using UtopiaCity.Services.Emergency;
-using UtopiaCity.Services.Sport;
 using UtopiaCity.Services.Media;
 
 namespace UtopiaCity
@@ -39,12 +36,6 @@ namespace UtopiaCity
 
             services.AddScoped<EmergencyReportService, EmergencyReportService>(); 
             services.AddScoped<DataCaptureService, DataCaptureService>();
-
-            services.AddScoped<SportComplexService, SportComplexService>();
-          
-            services.AddScoped<FlightService, FlightService>();
-          
-            services.AddScoped<WeatherReportService, WeatherReportService>();
 
             #endregion
 
@@ -84,27 +75,6 @@ namespace UtopiaCity
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-                DbInitializer.RegisterSubInitializers();
-
-                var appConfig = Configuration.GetSection("AppConfig").Get<AppConfig>();
-                if (appConfig != null)
-                {
-                    if (appConfig.ClearDb)
-                    {
-                        DbInitializer.ClearDb(context);
-                    }
-
-                    if (appConfig.SeedDb)
-                    {
-                        DbInitializer.InitializeDb(context);
-                    }
-                }
-            }
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -11,7 +11,6 @@ using UtopiaCity.Data;
 using UtopiaCity.Services.Airport;
 using UtopiaCity.Services.Emergency;
 using UtopiaCity.Services.Sport;
-using UtopiaCity.Services.Media;
 
 namespace UtopiaCity
 {
@@ -37,8 +36,7 @@ namespace UtopiaCity
 
             #region Services
 
-            services.AddScoped<EmergencyReportService, EmergencyReportService>(); 
-            services.AddScoped<DataCaptureService, DataCaptureService>();
+            services.AddScoped<EmergencyReportService, EmergencyReportService>();
 
             services.AddScoped<SportComplexService, SportComplexService>();
           

@@ -10,8 +10,11 @@ using UtopiaCity.Common;
 using UtopiaCity.Data;
 using UtopiaCity.Services.Airport;
 using UtopiaCity.Services.Emergency;
-using UtopiaCity.Services.Sport;
+<<<<<<< HEAD
 using UtopiaCity.Services.Media;
+=======
+using UtopiaCity.Services.Sport;
+>>>>>>> dev
 
 namespace UtopiaCity
 {
