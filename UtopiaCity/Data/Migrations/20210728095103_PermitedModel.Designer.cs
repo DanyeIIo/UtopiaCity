@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UtopiaCity.Data;
 
 namespace UtopiaCity.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210728095103_PermitedModel")]
+    partial class PermitedModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -519,39 +521,6 @@ namespace UtopiaCity.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("TimelineModel");
-                });
-
-            modelBuilder.Entity("UtopiaCity.Models.Media.DataCapture", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Header")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<bool>("Published")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Ready")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("Status")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DataCapture");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

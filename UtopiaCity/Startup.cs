@@ -8,10 +8,13 @@ using Microsoft.Extensions.Hosting;
 using System;
 using UtopiaCity.Common;
 using UtopiaCity.Data;
+using UtopiaCity.Services.CityAdministration;
 using UtopiaCity.Services.Airport;
 using UtopiaCity.Services.Emergency;
+using UtopiaCity.Services.Life;
 using UtopiaCity.Services.Sport;
 using UtopiaCity.Services.Media;
+using UtopiaCity.Services.Timeline;
 
 namespace UtopiaCity
 {
@@ -40,12 +43,25 @@ namespace UtopiaCity
             services.AddScoped<EmergencyReportService, EmergencyReportService>(); 
             services.AddScoped<DataCaptureService, DataCaptureService>();
 
-            services.AddScoped<SportComplexService, SportComplexService>();
+            services.AddScoped<EmergencyReportService, EmergencyReportService>();
           
+            services.AddScoped<ResidentAccountService, ResidentAccountService>();
+          
+            services.AddScoped<SportComplexService, SportComplexService>();
+
+            services.AddScoped<FlightService, FlightService>();
+            services.AddScoped<WeatherReportService, WeatherReportService>();
+
+            services.AddScoped<TimelineService, TimelineService>();
+
+            services.AddScoped<ScheduleService, ScheduleService>();
+
+            services.AddScoped<PermitedConditonsService, PermitedConditonsService>();
+
             services.AddScoped<FlightService, FlightService>();
           
             services.AddScoped<WeatherReportService, WeatherReportService>();
-
+            services.AddScoped<LifeService, LifeService>();
             #endregion
 
             services.Configure<IdentityOptions>(options =>
